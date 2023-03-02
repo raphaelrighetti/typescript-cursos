@@ -1,0 +1,18 @@
+TypeScript é um superset do JavaScript, tendo tudo que o JavaScript tem, só que com features a mais e uma sintaxe tipada.
+
+O nosso código TS precisa ser transpilado para um código JS convencional para o navegador entender, e para isso os nossos códigos são transpilados sempre para a pasta dist, que será a pasta do deploy, por assim dizer.
+
+Além disso, o que realmente mais atrai no TypeScript é saber que o nosso código está com problema antes mesmo de rodá-lo, pois como há uma "compilação" a ser feita, o compilador do TypeScript irá nos avisar dos problemas enquanto ainda estamos codando.
+
+============MÓDULOS============
+
+Podemos, com o JS, adicionar um script do tipo "module" no nosso arquivo HTML, assim fazendo com que todos os outros módulos utilizados por esse script funcionem, o que é uma coisa muito boa e faz a gente não precisar ficar importando um monte de scripts no arquivo HTML.
+
+Podemos pensar nesse módulo inicial como uma classe "main" do Java, que é onde a aplicação sempre vai iniciar.
+
+Para inseri-lo no nosso arquivo HTML, basta incluí-lo em uma tag <script></script> com o type="module".
+
+============MODELO============
+
+Um modelo é uma representação de algo real no nosso código, por exemplo uma negociação.
+
