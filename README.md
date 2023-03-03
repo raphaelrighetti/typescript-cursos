@@ -1,5 +1,7 @@
 # TypeScript Cursos - Alura
 
+Repositório para salvar e compartilhar meus códigos desenvlvidos durante a formação "Mergulhe no JavaScript com TypeScript" da Alura.
+
 ## TypeScript parte 1: evoluindo seu JavaScript
 
 Neste curso irei aprender o básico do TypeScript e analisar as vantages de utilizá-lo em vez do JavaScript.
@@ -27,3 +29,11 @@ Nesta aula vi como funciona a tipagem no TypeScript, quais os benefícios de us�
 Além disso, vi como utilizar controllers no TypeScript para controlar as interações do usuário com a página criando uma classe controller e um método que escuta o submit do formulário da página.
 
 Também vi um pouco sobre a inferência de tipos no TypeScript e quando usá-la.
+
+### Aula 4
+
+#### Entendendo Generics no TS
+
+Nesta aula vi como funcionam Generics no TypeScript utilizando eles em um Array para definir o tipo dos itens dele, assim não permitindo a entrada de outros tipos em tempo de compilação.
+
+Além disso, conheci o tipo "ReadonlyArray", que é um Array como outro qualquer, mas que não permite nenhuma operação que irá modificar os itens dentro dele em tempo de compilação.

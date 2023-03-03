@@ -57,7 +57,7 @@ O compilador respeita a árvore de pastas que temos no diretório onde estão os
 
 ============SINTAXE TIPADA============
 
-Podemos usar o modificador de visibilidade "private" em atributos de classes no TypeScript, assim não permitindo acesso à eles.
+Podemos usar o modificador de visibilidade "private" em atributos de classes no TypeScript, assim não permitindo acesso à eles. Também podemos usar o "public".
 
 Para getters, utilizamos os métodos get padrão que temos no JS também.
 
@@ -84,4 +84,24 @@ Para tirarmos esse comportamento, podemos adicionar a seguinte configuração no
 Um controller no TS nada mais é do que uma classe ou módulo que vai ser responsável por tratar a interação do usuário na página e fazer a o que deve se feito a partir desta interação.
 
 Normalmente vamos ter esses controllers atrelados a elementos do nosso dom, como um botão, por exemplo, assim chamando o controller quando algum evento ocorrer neste elemento.
+
+============GENERICS============
+
+No TypeScript temos Generics, assim como no Java, e a sintaxe é bem parecida. Exemplo:
+
+"private lista: Array<string> = [];"
+
+Desta forma dizemos que a nossa variável "lista" é um Array de strings, assim não permitindo adicionarmos nenhum outro tipo como item do Array. Inclusive, quando fazemos um for nos itens do Array, temos todo o auto-complete com os métodos e propriedades de String.
+
+Se temos um Array<any> encapsulado em uma classe que não queremos que seja modificável fora dos métodos da classe, podemos retornar uma cópia do Array<any> em vez dele em si no nosso método get. Para fazer isto, basta usar o spread:
+
+"return [...<nosso Array<any>];"
+
+Essa é uma forma de resolver este problema relativamente antiga e do próprio JS, o TypeScript possui uma forma bem mais eficiente de fazer isso que é usar o modificador "readonly". Para isso, basta modificar o retorno do nosso método para "ReadonlyArray<<tipo>>". Exemplo:
+
+listar(): ReadonlyArray<any> {
+    return <nossa lista privada>;
+}
+
+Desta forma o compilador do TS não nos deixará executar nenhum método que modifique a lista, gerando um erro de compilação quando tentamos fazer algo do tipo.
 
