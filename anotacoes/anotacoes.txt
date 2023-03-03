@@ -16,3 +16,47 @@ Para inseri-lo no nosso arquivo HTML, basta incluí-lo em uma tag <script></scri
 
 Um modelo é uma representação de algo real no nosso código, por exemplo uma negociação.
 
+============COMPILADOR============
+
+Assim que trocamos a extensão de um arquivo .js para .ts, temos um linting muito mais específico nos erros, mostrando várias coisas que podem causar problemas enquanto estamos codando.
+
+Os nossos arquivo .ts não podem ficar na pasta "dist", pois a pasta dist é o nosso código final, compilado para js a partir dos arquivos ts, e se tivermos arquivos ts lá, o navegador não conseguirá lê-los. Devemos colocar os arquivos .ts na pasta "app".
+
+Instalamos o compilador por meio do npm, mas só instalá-lo não basta, temos que ter um arquivo "tsconfig.json" que irá dizer ao compilador como ele deve se comportar.
+
+Podemos usar a opção: 
+
+"compilerOptions": {
+    "outDir': <diretório de saída dos arquivos compilados>,
+    "target": <versão do js>,
+    "noEmitOnError": true
+},
+"include": [<caminhos de pastas com os arquivos .js>]
+
+Desta forma estamos falando para o compilador do TypeScript que ele deve compilar os arquivos para certa pasta, usando tal versão do JavaScript e onde estão os arquivos .ts que ele deve compilar. Também dizemos que ele não deve compilar os arquivos se estiverem com erro de  compilação.
+
+Essa é a configuração mínima que precisamos fazer no nosso compilador do TypeScript para ele funcionar.
+
+============COMPILANDO============
+
+Para compilarmos o nosso código, podemos criar um script no arquivo package.json, que ficaria assim:
+
+"compile": "tsc"
+
+Assim toda vez que rodarmos o script "compile", iremos rodar o comando tsc para compilar os nossos arquivos.
+
+Também podemos rodar o compilador de modo que a cada mudança nos arquivos .ts ele compile automaticamente. Para isso, basta criamos um script:
+
+"watch": "tsc -w"
+
+Dessa forma os arquivos serão gerados automaticamente na pasta de saída, mas não teremos o servidor rodando para escutar a essas alterações. Para fazer isso precisamos usar o módulo "concurrently", fazendo um script que roda outros scripts ao mesmo tempo. Por exemplo:
+
+"start": "concurrently \"npm run watch\" \"npm run server\""
+
+O compilador respeita a árvore de pastas que temos no diretório onde estão os nossos arquivos .ts, criando a mesma árvore na pasta de saída, mesmo que não tenhamos criado nem a pasta de saída em si.
+
+============SINTAXE TIPADA============
+
+Podemos usar o modificador de visibilidade "private" em atributos de classes no TypeScript, assim não permitindo acesso à eles.
+
+Para getters, utilizamos os métodos get padrão que temos no JS também.
