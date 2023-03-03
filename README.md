@@ -37,3 +37,17 @@ Também vi um pouco sobre a inferência de tipos no TypeScript e quando usá-la.
 Nesta aula vi como funcionam Generics no TypeScript utilizando eles em um Array para definir o tipo dos itens dele, assim não permitindo a entrada de outros tipos em tempo de compilação.
 
 Além disso, conheci o tipo "ReadonlyArray", que é um Array como outro qualquer, mas que não permite nenhuma operação que irá modificar os itens dentro dele em tempo de compilação.
+
+### Aula 5
+
+#### Simplificando o código
+
+Nesta aula vi algumas maneiras de simplificar o código e deixá-lo mais enxuto utilizando atributos definidos no próprio construtor, outra sintaxe para definir Arrays e o modificador "readonly" em atributos públicos para não precisar de métodos getters.
+
+Também aprendi algumas coisas a mais sobre o modificador "readonly" e técnicas para deixar as nossas classes mais encapsuladas utilizando a programação defensiva.
+
+### Conclusão
+
+Neste curso aprendi o básico de como o TypeScript funciona e pude ver como ele é um pouco parecido com o Java, apesar de ser diferente em diversos quesitos.
+
+Gostei bastante da linguagem até agora e estou animado para os próximos cursos.

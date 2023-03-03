@@ -95,7 +95,7 @@ Desta forma dizemos que a nossa variável "lista" é um Array de strings, assim 
 
 Se temos um Array<any> encapsulado em uma classe que não queremos que seja modificável fora dos métodos da classe, podemos retornar uma cópia do Array<any> em vez dele em si no nosso método get. Para fazer isto, basta usar o spread:
 
-"return [...<nosso Array<any>];"
+"return [...<nosso Array<any>>];"
 
 Essa é uma forma de resolver este problema relativamente antiga e do próprio JS, o TypeScript possui uma forma bem mais eficiente de fazer isso que é usar o modificador "readonly". Para isso, basta modificar o retorno do nosso método para "ReadonlyArray<<tipo>>". Exemplo:
 
@@ -105,3 +105,32 @@ listar(): ReadonlyArray<any> {
 
 Desta forma o compilador do TS não nos deixará executar nenhum método que modifique a lista, gerando um erro de compilação quando tentamos fazer algo do tipo.
 
+============PARTICULARIDADES============
+
+No TypeScript podemos declarar os atributos da nossa classe nos próprios argumentos do construtor, ou seja, não precisamos nem ter um corpo no construtor e nem tê-los na classe em si. Para isso basta utilizar a sintaxe:
+
+constructor(
+    private _meuAtributo: any
+) {}
+
+Desta forma teremos um atributo privade chamado _meuAtributo na nossa classe. Funciona com "public" também.
+
+Quando estamos criando algum atributo, parâmetro ou variável que é um Array, não precisamos necessariamente utilizar a sintaxe com Generics, podemos utilizar da seguinte forma:
+
+"private _pessoas: Pessoa[] = [];"
+
+Isso dá no mesmo.
+
+Podemos utilizar essa sintaxe para ReadonlyArray também, basta usar o modificador "readonly":
+
+get pessoas(): readonly Pessoa[] {
+    return this._pessoas;
+}
+
+Também podemos usar o modificador "readonly" para atributos públicos da nossa classe, assim fazendo com que não precisemos dos getters, mas ainda assim impossibilitando a atribuição de valores fora da classe.
+
+Importante lembrar que, nesse caso, ainda conseguimos acessar todos os métodos do atributos, inclusive os que o modificam. Então o uso do readonly nesses casos pode não ser omais recomendável.
+
+Importante lembrarmos que mesmo recebendo os atributos em métodos getters, ainda podemos utilizar os métodos que modificam esses atributos, então ainda continuamos com o mesmo problema.
+
+O ideal para fazermos nesses casos é retornar uma nova instância idêntica à nossa propriedade, assim fazendo com que as modificações feitas não alterem o atributo real da classe.
