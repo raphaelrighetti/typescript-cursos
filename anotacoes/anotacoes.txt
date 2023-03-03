@@ -60,3 +60,28 @@ O compilador respeita a árvore de pastas que temos no diretório onde estão os
 Podemos usar o modificador de visibilidade "private" em atributos de classes no TypeScript, assim não permitindo acesso à eles.
 
 Para getters, utilizamos os métodos get padrão que temos no JS também.
+
+Para especificarmos o tipo em instâncias, basta utilizarmos a sintaxe:
+
+<instância>: <tipo>
+
+Sim, o tipo vem na frente da declaração.
+
+O TypeScript possui vários tipos nativos dele que representam uma série de coisas, inclusive vários tipos de elementos HTML, como o "HTMLInputElement", por exemplo.
+
+Importante lembrar que em vários casos o TS adiciona o tipo certo à instância sem especificarmos ele, com base no tipo que estamos atribuindo a ela.
+
+Por padrão, quando não especificamos nenhum tipo em alguma instância no nosso código, o TypeScript atribui o tipo "any", o que significa que aquela instância poderá qualquer tipo, o que não é o ideal.
+
+Para tirarmos esse comportamento, podemos adicionar a seguinte configuração no nosso "tsconfig.json":
+
+"noImplicitAny": true
+
+É uma boa prática sempre especificar o tipo em atributos de classes, parâmetros recebidos em métodos e retornos de métodos e funções, só deixando o TS atribuir automaticamente quando estamos criando variáveis dentro de métodos.
+
+============CONTROLLER============
+
+Um controller no TS nada mais é do que uma classe ou módulo que vai ser responsável por tratar a interação do usuário na página e fazer a o que deve se feito a partir desta interação.
+
+Normalmente vamos ter esses controllers atrelados a elementos do nosso dom, como um botão, por exemplo, assim chamando o controller quando algum evento ocorrer neste elemento.
+
