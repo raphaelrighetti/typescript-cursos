@@ -148,3 +148,17 @@ Lembrando que, como estamos usando o TS puro, para fazer essas coisas podemos us
 *Internationalization*
 
 É um tipo com alguns métodos estáticos que nos permitem fazer coisas com funcionalidades do navegador, como formatar uma data com base na localidade do usuário, por exemplo.
+
+============HERANÇA============
+
+Herança no TypeScript funciona de forma bem similar à herança no Java, podendo, inclusive, usarmos o modificador preotected para que as filhas tenham acesso ao atributo da mãe.
+
+Podemos usar Generics em classes criadas por nós mesmos, assim podendo deixar dinâmico o tipo do parâmetro recebido por algum método e etc.
+
+Para isso, basta na declaração da classe usar a sintaxe:
+
+"export class Algo<T> {}"
+
+Com isso, basta colocar "T" como tipo das coisas que precisam usar esse Generics.
+
+Podemos ter classes abstratas assim como no Java, podendo definir métodos abstratos e não abstratos nelas.
