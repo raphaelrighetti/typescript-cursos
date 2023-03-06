@@ -71,3 +71,11 @@ Também aprendi um pouco sobre o tipo "Intl", que nos permite fazer formataçõe
 Nesta aula aprendi como utilizar a herança no TypeScript, criando uma classe abstrata e genérica para todas as nossas Views estenderem, assim reduzindo a repetição de código e forçando as filhas a implementarem os métodos abstratos da mãe.
 
 Para colocar isso em prática, também aprendi a utilizar Generics nas classes criadas por nós, assim fazendo as filhas dizerem o tipo do retorno dos métodos, parâmetros recebidos, etc. Tudo depende do que nós definirmos.
+
+### Aula 3
+
+#### Entendendo Enums no TypeScript
+
+Nesta aula aprendi como usar enums no TypeScript para criar constantes que ficam mais claras do que representam, assim deixando a leitura do nosso código bem melhor.
+
+Além disso, vi um pouco mais sobre os modificadores de visibilidade quando se trata de métodos.

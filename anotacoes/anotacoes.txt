@@ -162,3 +162,21 @@ Para isso, basta na declaração da classe usar a sintaxe:
 Com isso, basta colocar "T" como tipo das coisas que precisam usar esse Generics.
 
 Podemos ter classes abstratas assim como no Java, podendo definir métodos abstratos e não abstratos nelas.
+
+============VISIBILIDADE============
+
+Quando omitimos o modificador de visibilidade, o TypeScript coloca public como padrão.
+
+Podemos mudar a visibilidade de um método abstrato herdado da classe mãe na classe filha para deixá-lo mais visível, mas não o contrário. Se precisarmos proteger este método, devemos deixá-lo como protected na classe filha também.
+
+Podemos ter métodos privados em classes normalmente.
+
+============ENUM============
+
+Enums no TypeScript são quase a mesma coisa que no Java.
+
+Para declará-los, usamos a palavra chave "enum" em vez de "class" e definimos as constantes apenas declarando os nomes delas, com o TypeScript incrementando os valores inteiros delas automaticamente, sempre começando no 0.
+
+É recomendável nós mesmos definirmos os valores dos enums, assim garantindo que eles vão estar certos, independente da ordem. Para fazer isso, basta atribuirmos valores com o sinal "=" na definição das constantes.
+
+Enums não precisam ser apenas inteiros, podem ser qualquer valor que colocarmos para as constantes.

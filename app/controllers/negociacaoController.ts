@@ -2,6 +2,7 @@ import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js"
 import { MensagemView } from "../views/mensagemView.js";
 import { NegociacoesView } from "../views/negociacoesView.js";
+import { DiasDaSemana } from "../enums/diasDaSemana.js";
 
 export class NegociacaoController {
     
@@ -19,19 +20,19 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes);
     }
 
-    adiciona(): void {
+    public adiciona(): void {
         const negociacao = this.criaNegociacao();
-
-        negociacao.data.setDate(1);
-
+        if (!this.ehDiaUtil(negociacao.data)) {
+            this.mensagemView.update("Negociações só podem ser feitas em dias úteis.");
+            return;
+        }
         this.negociacoes.adiciona(negociacao);
-        this.mensagemView.update("Negociação inserida com sucesso!");
-        this.negociacoesView.update(this.negociacoes);
+        this.atualizaViews();
         
         this.limpaFormulario();
     }
 
-    limpaFormulario(): void {
+    private limpaFormulario(): void {
         this.inputData.value = "";
         this.inputQuantidade.value = "1";
         this.inputValor.value = "0.0";
@@ -39,11 +40,21 @@ export class NegociacaoController {
     }
 
 
-    criaNegociacao(): Negociacao {
+    private criaNegociacao(): Negociacao {
         const data: Date = new Date(this.inputData.value.replace(/-/g, ","));
         const quantidade: number = parseInt(this.inputQuantidade.value);
         const valor: number = parseFloat(this.inputValor.value)
 
         return new Negociacao(data, quantidade, valor);
+    }
+
+    private atualizaViews():void {
+        this.negociacoesView.update(this.negociacoes);
+        this.mensagemView.update("Negociação inserida com sucesso!");
+    }
+
+    private ehDiaUtil(data: Date): boolean {
+        return data.getDay() > DiasDaSemana.DOMINGO
+        && data.getDay() < DiasDaSemana.SABADO;
     }
 }
