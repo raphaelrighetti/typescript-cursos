@@ -134,3 +134,17 @@ Importante lembrar que, nesse caso, ainda conseguimos acessar todos os métodos 
 Importante lembrarmos que mesmo recebendo os atributos em métodos getters, ainda podemos utilizar os métodos que modificam esses atributos, então ainda continuamos com o mesmo problema.
 
 O ideal para fazermos nesses casos é retornar uma nova instância idêntica à nossa propriedade, assim fazendo com que as modificações feitas não alterem o atributo real da classe.
+
+============VIEW============
+
+Views são as nossas classes ou módulos responsáveis por gerar a view do usuário, que no caso do front-end é algum componente da página ou uma página em si.
+
+Podemos usar um template HTML na nossa classe view para inserir os dados dinamicamente nela, assim fazendo algo parecido com o JSX do React.
+
+Lembrando que, como estamos usando o TS puro, para fazer essas coisas podemos usar os métodos do document que estão disponíveis para nós.
+
+============Intl============
+
+*Internationalization*
+
+É um tipo com alguns métodos estáticos que nos permitem fazer coisas com funcionalidades do navegador, como formatar uma data com base na localidade do usuário, por exemplo.

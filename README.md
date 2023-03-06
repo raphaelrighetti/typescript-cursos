@@ -4,7 +4,7 @@ Repositório para salvar e compartilhar meus códigos desenvlvidos durante a for
 
 ## TypeScript parte 1: evoluindo seu JavaScript
 
-Neste curso irei aprender o básico do TypeScript e analisar as vantages de utilizá-lo em vez do JavaScript.
+Neste curso irei aprender o básico do TypeScript e analisar as vantages de utilizá-lo no lugar do JavaScript.
 
 ### Aula 1
 
@@ -51,3 +51,15 @@ Também aprendi algumas coisas a mais sobre o modificador "readonly" e técnicas
 Neste curso aprendi o básico de como o TypeScript funciona e pude ver como ele é um pouco parecido com o Java, apesar de ser diferente em diversos quesitos.
 
 Gostei bastante da linguagem até agora e estou animado para os próximos cursos.
+
+## TypeScript parte 2: avançando na linguagem
+
+Neste curso irei me aprofundar um pouco mais na linguagem utilizando mais recursos dela e programando com a orientação a objeto, fazendo uma funcionalidade de visualização da nossa lista de negociações do projeto.
+
+### Aula 1
+
+#### Iniciando a View
+
+Nesta aula aprendi a criar uma classe de View para o projeto do curso, utilizando um template HTML e inserindo dinamicamente as negociações incluidas na lista pelo usuário.
+
+Também aprendi um pouco sobre o tipo "Intl", que nos permite fazer formatações de alguns tipos com base na localidade do navegador do usuário.
