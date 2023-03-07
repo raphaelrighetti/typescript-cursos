@@ -1,10 +1,16 @@
 import { NegociacaoController } from "./controllers/negociacaoController.js";
 
 const negociacaoController: NegociacaoController = new NegociacaoController();
-const form: HTMLFormElement = document.querySelector(".form");
+const form: HTMLFormElement | null = document.querySelector(".form");
 
-form.addEventListener("submit", event => {
-    event.preventDefault();
+if (form) {
+    form.addEventListener("submit", event => {
+        event.preventDefault();
+    
+        negociacaoController.adiciona();
+    });
+} else {
+    throw new Error("Não foi possível encontrar o formulário no arquivo HTML, verifique se ele existe.");
+}
 
-    negociacaoController.adiciona();
-});
+

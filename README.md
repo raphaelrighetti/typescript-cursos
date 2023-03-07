@@ -89,3 +89,19 @@ Nesta aula aprendi a melhorar o código isolando a lógica de criação do model
 Também aprendi a proteger o template HTML fazendo um replace de tags script, para que não seja possível adicioná-las no innerHTML.
 
 Também vi que é possível utilizar parâmetros opcionais em métodos/funções no TypeScript, mas não utilizei esse recurso no meu projeto, pois achei que nesse caso não faria sentido.
+
+### Aula 5
+
+#### strictNullChecks no compilador
+
+Nesta aula aprendi a utilizar a configuração "strictNullChecks": true no compilador para não permitir que ele infira que todas nossas variáveis podem ser do tipo null também, o que causa alguns problema com a API do "querySelector();", que sempre retornar uma referência que pode ser null, nos obrigando a tratá-la.
+
+Também aprendi como usar o casting para deixar explicito ao compilador que eu tenho certeza do tipo daquela referência, assim tendo uma forma de utilizar a referência sem ter que fazer validações de se ela é null ou não.
+
+Além disso, aprendi a utilizar a configuração "removeComments": true, para não levar os comentários que adicionarmos nos arquivos .ts para os arquivos .js compilados.
+
+### Conclusão
+
+Neste curso aprendi algumas coisas um pouco mais avançadas da linguagem TypeScript com o foco no desenvolvimento utilizando o paradigma de orientação a objetos, coisa que já tenho certa familiaridade e facilitou muito a entender alguns conceitos por conta da minha experiência com o Java.
+
+Foi um curso muito bom e estou animado para o próximo, onde irei melhorar ainda mais o código, deixando-o mais parecido com o que é usar o TypeScript quando estamos trabalhando com algum framework.

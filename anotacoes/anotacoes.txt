@@ -192,3 +192,49 @@ Para fazer isso, basta utilizar a sintaxe:
 Essa "?" no final da declaração do parâmetro "idade" é o que faz com que esse parâmetro seja opcional, assim dando a possibilidade de ele ser undefined no nosso código, por isso temos que fazer uma verificação para saber se ele está chegando ou não. 
 
 Esses parâmetros opcionais não podem ser o primeiro parâmetro da função e não podem ser seguido por parâmetros não opcionais.
+
+============REMOVENDO COMENTÁRIOS============
+
+Devemos remover qualquer comentário no nosso código compilado para JS, pois não faz sentido tê-los lá.
+
+Podemos deixar os comentários nos arquivos .ts normalmente, apenas modificando o tsconfig.json para não compilá-los para o arquivo .js.
+
+Para isso, basta adicionarmos a configuração:
+
+"removeComments": true
+
+============const algo: Tipo1 | Tipo2============
+
+Podemos definir que uma variável vai ser ou de um tipo ou de outro no TypeScript.
+
+Isso não funciona apenas com dois tipos, podemos definir que uma variável pode ser de diversos tipos sem problema algum.
+
+O nome disso é Union Types.
+
+Isso é o que a API do "querySelector();" faz, dizendo que o elemento pode ser HTMLElement | null.
+
+Isso pode ser um problema, pois se tentarmos fazer alguma ação que faríamos com um HTMLElement com uma variável do tipo null, isso causará um erro.
+
+Isso acontece porque o compilador do TS vem com a configuração:
+
+"strictNullChecks": false
+
+o que faz com que o compilador não nos avise que a referência pode ser null em tempo de compilação.
+
+Se mudamos essa configuração para true,o nosso código irá começar a apresentar diversos erros, o que é o esperado.
+
+Quando estamos com essa configuração, temos que especificar que as variáveis que podem ser null podem receber esse tipo também.
+
+Nesse caso teríamos que fazer uma série de verificações para ver se a variável é null ou não, o que não é o ideal.
+
+Uma solução melhor é assumir que as variáveis que podem ser null não vão ser null, assumindo que o retorno delas é do tipo que deveria ser. Para isso deixamos de definir que a variável também pode ser do tipo null e usamos o casting, por exemplo:
+
+this.inputData = document.querySelector("#data") as HTMLInputElement;
+
+ou
+
+this.inputData = <HTMLInputElement> document.querySelector("#data");
+
+Assim garantimos para o compilador que temos certeza de que essa variável vai ser do tipo "HTMLInputElement".
+
+Podemos utilizar o casting em outros casos também, como para converter um "Element" para um "HTMLElement".
