@@ -180,3 +180,15 @@ Para declará-los, usamos a palavra chave "enum" em vez de "class" e definimos a
 É recomendável nós mesmos definirmos os valores dos enums, assim garantindo que eles vão estar certos, independente da ordem. Para fazer isso, basta atribuirmos valores com o sinal "=" na definição das constantes.
 
 Enums não precisam ser apenas inteiros, podem ser qualquer valor que colocarmos para as constantes.
+
+============PARÂMETROS OPCIONAIS============
+
+Podemos receber parâmetrros opcionais em métodos/funções no TypeScript.
+
+Para fazer isso, basta utilizar a sintaxe:
+
+"public static criaPessoa(nome: string, idade?: number): Pessoa {}"
+
+Essa "?" no final da declaração do parâmetro "idade" é o que faz com que esse parâmetro seja opcional, assim dando a possibilidade de ele ser undefined no nosso código, por isso temos que fazer uma verificação para saber se ele está chegando ou não. 
+
+Esses parâmetros opcionais não podem ser o primeiro parâmetro da função e não podem ser seguido por parâmetros não opcionais.

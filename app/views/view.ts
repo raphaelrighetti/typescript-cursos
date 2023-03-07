@@ -9,6 +9,7 @@ export abstract class View<T> {
     protected abstract template(model: T): string;
 
     update(model: T): void {
-        this.elemento.innerHTML = this.template(model);
+        this.elemento.innerHTML = this.template(model)
+        .replace(/<script>[\s\S]*?<\/script>/g, "");
     }
 }

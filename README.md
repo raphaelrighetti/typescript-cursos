@@ -79,3 +79,13 @@ Para colocar isso em prática, também aprendi a utilizar Generics nas classes c
 Nesta aula aprendi como usar enums no TypeScript para criar constantes que ficam mais claras do que representam, assim deixando a leitura do nosso código bem melhor.
 
 Além disso, vi um pouco mais sobre os modificadores de visibilidade quando se trata de métodos.
+
+### Aula 4
+
+#### Melhorando o código
+
+Nesta aula aprendi a melhorar o código isolando a lógica de criação do modelo Negociacao em um método estático no próprio modelo que recebe strings como parâmetros e faz a lógica de conversão dos valores, chamando o construtor da classe com os valores convertidos.
+
+Também aprendi a proteger o template HTML fazendo um replace de tags script, para que não seja possível adicioná-las no innerHTML.
+
+Também vi que é possível utilizar parâmetros opcionais em métodos/funções no TypeScript, mas não utilizei esse recurso no meu projeto, pois achei que nesse caso não faria sentido.

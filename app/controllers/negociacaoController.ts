@@ -21,14 +21,19 @@ export class NegociacaoController {
     }
 
     public adiciona(): void {
-        const negociacao = this.criaNegociacao();
+        const negociacao = Negociacao.criaDe(
+            this.inputData.value,
+            this.inputQuantidade.value,
+            this.inputValor.value
+        );
+        
         if (!this.ehDiaUtil(negociacao.data)) {
             this.mensagemView.update("Negociações só podem ser feitas em dias úteis.");
             return;
         }
+
         this.negociacoes.adiciona(negociacao);
         this.atualizaViews();
-        
         this.limpaFormulario();
     }
 
@@ -37,15 +42,6 @@ export class NegociacaoController {
         this.inputQuantidade.value = "1";
         this.inputValor.value = "0.0";
         this.inputData.focus();
-    }
-
-
-    private criaNegociacao(): Negociacao {
-        const data: Date = new Date(this.inputData.value.replace(/-/g, ","));
-        const quantidade: number = parseInt(this.inputQuantidade.value);
-        const valor: number = parseFloat(this.inputValor.value)
-
-        return new Negociacao(data, quantidade, valor);
     }
 
     private atualizaViews():void {
