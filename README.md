@@ -105,3 +105,15 @@ Além disso, aprendi a utilizar a configuração "removeComments": true, para n�
 Neste curso aprendi algumas coisas um pouco mais avançadas da linguagem TypeScript com o foco no desenvolvimento utilizando o paradigma de orientação a objetos, coisa que já tenho certa familiaridade e facilitou muito a entender alguns conceitos por conta da minha experiência com o Java.
 
 Foi um curso muito bom e estou animado para o próximo, onde irei melhorar ainda mais o código, deixando-o mais parecido com o que é usar o TypeScript quando estamos trabalhando com algum framework.
+
+## Typescript parte 3: mais técnicas e boas práticas
+
+Neste curso irei aprender mais recursos da linguagem TypeScript e melhorar o meu código seguindo um padrão mais semlhante ao padrão utilizado quando estamos trabalhando com algum framework que dá suporte ao uso do TypeScript.
+
+### Aula 1
+
+#### Entendendo Decorators
+
+Nesta aula aprendi o básico de como se trabalhar com Decorators no TypeScript, um recurso ainda experimental na linguagem, mas utilizado em frameworks como Angular e React, pois nos traz uma funcionalidade muito legal para deixarmos o nosso código mais genérico quando precisamos de um decorator para mudar a funcionalidade de métodos da nossa classe, por exemplo.
+
+Apesar de ser um pouco semelhante com as annotations do Java em alguns aspectos, é um assunto bem complexo para mim e ainda tenho que estudar um pouco para consolidar o meu conhecimento nele, pois são muitas regras de uso desse recurso e ainda não estou acostumado com o fluxo, apesar de o conceito ser bem simples e se encaixar com o design pattern decorator, onde recebemos algo por parâmetro, decoramos esse algo e retornamos outro algo com coisas a mais, mas ainda com as funcionalidades que tínhamos no algo original.

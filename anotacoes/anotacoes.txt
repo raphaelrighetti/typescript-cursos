@@ -238,3 +238,79 @@ this.inputData = <HTMLInputElement> document.querySelector("#data");
 Assim garantimos para o compilador que temos certeza de que essa variável vai ser do tipo "HTMLInputElement".
 
 Podemos utilizar o casting em outros casos também, como para converter um "Element" para um "HTMLElement".
+
+============REQUISITOS NÃO FUNCIONAIS============
+
+São todos os requisitos que, por mais que não tenham sido especificados, são necessários na nossa aplicação.
+
+============performance============
+
+É um objeto disponível globalmente em todos os navegadores que tem uma série de métodos para calcularmos a performance.
+
+Podemos utilizar o método "now();" para pegarmos os milissegundos de agora.
+
+============DECORATOR============
+
+Decorators no TypeScript são tipo annotations no Java e também são utilizadas com um "@" antes do nome e acima de métodos.
+
+É uma função que retorna outra função que iremos implementar mais coisas, para assim utilizá-la como o método que estamos passando para o decorator.
+
+Eles servem para pegarmos um método nosso, decorá-lo na função decorator e sobrescrevê-lo adicionando coisas nele.
+
+Na nossa função decorator precisamos retornar outra função que recebe três parâmetros:
+
+1. target: any
+
+    É o target do nosso decorator que diz no que vamos adicioná-lo. Se for um método estático pode ser um construtor, se for um método padrão de uma classe é o prototype da classe.
+
+2. propertyKey: string
+
+    É o nome do método em que inserimos o decorator.
+
+3. descriptor: PropertyDescriptor
+
+    É o parâmetro que tem a referência par o método original sem o decorator, ou seja, é o parâmetro que sabe tudo o que aquele método faz.
+
+Se retornarmos o descriptor, nosso método que está anotado com o decorator irá continuar a mesma coisa, sem problema algum, mas para fazermos algo com o nosso decorator precisamos modificar esse descriptor, pois isso é o que fará com que a gente consiga modificar os nossos métodos com o decorator.
+
+Podemos pegar o método original com o parâmetro "value" do nosso descriptor, assim podendo atribuir o método original à uma variável.
+
+A ideia é sobrescrever o descriptor.value com uma função que irá fazer todas as ações que queremos fazer no nosso decorator, mas ainda executar o método original dentro dele.
+
+Como no método original podemos ter diversas implementações, onde nem sabemos exatamente qual vai ser o tipo do parâmetro recebido pelo método em alguns casos,  quando estamos mudando o "descriptor.value", não temos como saber qual parâmetro devemos passar na nova função que estamos atribuindo à ele, muito menos o tipo do parâmetro.
+
+Além disso, como atribuimos o método original à uma variável, ele perdeu o contexto do "this", que nesse caso seria a instância da classe que contém o método que está sendo decorado, o que atrapalha ainda mais quando vamos passar o parâmetro para o método que estamos sobrescrevendo do descriptor.
+
+Para combater essas duas coisas, devemos receber no método que estamos sobrescrevendo um array com os valores do objeto args, que podemos receber da seguinte forma:
+
+descriptor.value = function(...args: any[]) {}
+
+Dessa forma temos os argumentos passados ao método da nossa classe nessa funcção também, ainda de forma genérica e podendo ser quantos argumentos forem e de qualquer tipo.
+
+Ainda não temos o contexto do this para passarmos ao método original, mas para isso basta passarmos o this no método apply do método original, seguido do array "args" que recebemos como parâmetro na nossa nova função que está sobrecrevendo o "descriptor.value".
+
+Agora basta sobrescrevermos o "descriptor.value" com a nossa nova função que executará a ação que queremos ao chamar o método da nossa classe, também chamando o método original. 
+
+A função decorator irá ficar mais ou menos assim:
+
+export function logarTempoDeExecucao() {
+    return function (
+        target: any,
+        propertyKey: string,
+        descriptor: PropertyDescriptor
+    ) {
+        const metodoOriginal: Function = descriptor.value;
+        descriptor.value = function (...args: any[]) {
+            const tempo1 = performance.now();
+            metodoOriginal.apply(this, args);
+            const tempo2 = performance.now();
+            console.log(
+                `Tempo de execução do método "${propertyKey}" (em segundos): ${
+                    (tempo2 - tempo1) / 1000
+                }`
+            );
+        };
+
+        return descriptor;
+    };
+}
