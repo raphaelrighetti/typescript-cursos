@@ -314,3 +314,13 @@ export function logarTempoDeExecucao() {
         return descriptor;
     };
 }
+
+Podemos receber parâmetros nas nossas funções Decorator, inclusive tendo a possibilidade de passar um objeto para usar de configurações, etc. Esses parâmetros devem ser passados na função que executamos com o @, não na função retornada.
+
+Inclusive, essa função que retorna outra função é exclusivamente para passarmos parâmetros ao nosso decorator, ou seja, se não vamos receber nenhum parâmetro, podemos simplesmente exportar diretamente a função que seria retornada.
+
+Em métodos estáticos, o target é o constructor e em métodos da instância é o prototype da instância em si.
+
+Podemos colocar mais de um decorator para decorar o nosso método, mas isso pode bagunçar a ordem de execução deles. Isso acontece porque, se um decorator executa o nosso método e nosso método já tem outro decorator, na hora em que o decorator estiver chamando o método original, ele estará chamando o outro decorator também, assim parando a execução do decorator que está mais acima e voltando para ela após o término da outra execução.
+
+Podemos pegar uma série de informação sobre o método, a classe e etc no "this" do "descriptor.value".

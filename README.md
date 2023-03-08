@@ -117,3 +117,11 @@ Neste curso irei aprender mais recursos da linguagem TypeScript e melhorar o meu
 Nesta aula aprendi o básico de como se trabalhar com Decorators no TypeScript, um recurso ainda experimental na linguagem, mas utilizado em frameworks como Angular e React, pois nos traz uma funcionalidade muito legal para deixarmos o nosso código mais genérico quando precisamos de um decorator para mudar a funcionalidade de métodos da nossa classe, por exemplo.
 
 Apesar de ser um pouco semelhante com as annotations do Java em alguns aspectos, é um assunto bem complexo para mim e ainda tenho que estudar um pouco para consolidar o meu conhecimento nele, pois são muitas regras de uso desse recurso e ainda não estou acostumado com o fluxo, apesar de o conceito ser bem simples e se encaixar com o design pattern decorator, onde recebemos algo por parâmetro, decoramos esse algo e retornamos outro algo com coisas a mais, mas ainda com as funcionalidades que tínhamos no algo original.
+
+### Aula 2
+
+#### Mais detalhes sobre Decorators
+
+Nesta aula aprendi a usar parâmetros nos nossos Decorators, assim permitindo com que façamos uma lógica diferenciada dependendo de algum parâmetro recebido e vi que o único intuito de termos uma função que retorna outra função como nosso Decorator é justamente esse, ou seja, se não precisarmos de parâmetros no nosso Decorator, podemos simplesmente exportar a função que está fazendo toda a lógica diretamente.
+
+Além disso, aprendi sobre a ordem de execução dos Decorators quando temos mais de um em algum método e aprendi a acessar mais informações sobre o método que estamos decorando a partir do this do "descriptor.value".

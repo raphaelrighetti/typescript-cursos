@@ -1,4 +1,5 @@
 import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
+import { escapar } from "../decorators/escapar.js";
 
 export abstract class View<T> {
     protected elemento: HTMLElement;
@@ -14,11 +15,8 @@ export abstract class View<T> {
 
     protected abstract template(model: T): string;
 
-    @logarTempoDeExecucao()
+    @logarTempoDeExecucao(true)
     public update(model: T): void {
-        this.elemento.innerHTML = this.template(model).replace(
-            /<script>[\s\S]*?<\/script>/,
-            ""
-        );
+        this.elemento.innerHTML = this.template(model);
     }
 }
