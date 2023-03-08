@@ -4,6 +4,7 @@ import { domInjector } from "../decorators/domInjector.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { NegociacoesService } from "../services/negociacoes-service.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 
@@ -18,11 +19,26 @@ export class NegociacaoController {
     private inputValor: HTMLInputElement;
 
     private negociacoes = new Negociacoes();
+    private negociacoesService = new NegociacoesService();
     private negociacoesView = new NegociacoesView("#negociacoesView");
     private mensagemView = new MensagemView("#mensagemView");
 
     constructor() {
         this.negociacoesView.update(this.negociacoes);
+    }
+
+    public importaDados(): void {
+        this.negociacoesService
+            .obterDadosNegociacoesAPI()
+            .then(arrayNegociacoes => {
+                for (const itemNegociacao of arrayNegociacoes) {
+                    this.negociacoes.adiciona(itemNegociacao);
+                    this.atualizaView();
+                }
+            })
+            .catch(error => {
+                throw error;
+            });
     }
 
     @logarTempoDeExecucao()

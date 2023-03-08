@@ -135,3 +135,13 @@ Nesta aula aprendi como utilizar Decorators com propriedades para conseguirmos d
 Também aprendi a fazer uma solução de cache para o nosso método getter que irá retornar a nossa propriedade criada/modificada para a lógica do método getter não ser executada todas as vezes em que a propriedade for acessada.
 
 Aprendi muitos detalhes de como os parâmetros que recebemos nos Decorators funcionam e como utilizar lógicas para conseguirmos fazer coisas que não conseguiríamos fazer apenas acessando eles e modificando algumas coisas.
+
+### Aula 4
+
+#### Consumindo API externa
+
+Nesta aula aprendi como usar a fetch API dos navegadores para fazer requisições à APIs externas no TypeScript, o que não é muito diferente do jeito como fazemos no JavaScript, só que podendo usar os recursos do TypeScript para tornar o processamento dos dados recebidos mais fácil por meio de interfaces.
+
+Além disso, aprendi um pouco sobre interfaces no TypeScript e vi como elas são parecidas com as interfaces no Java, mas possuem algumas funcionalidades diferentes.
+
+Também aprendi a isolar algumas lógicas em outras classes "service" no nosso projeto e a trabalhar com métodos que devolvem Promises nas nossas classes.

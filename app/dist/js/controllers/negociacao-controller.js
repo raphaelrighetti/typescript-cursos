@@ -10,14 +10,29 @@ import { domInjector } from "../decorators/domInjector.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { NegociacoesService } from "../services/negociacoes-service.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
+        this.negociacoesService = new NegociacoesService();
         this.negociacoesView = new NegociacoesView("#negociacoesView");
         this.mensagemView = new MensagemView("#mensagemView");
         this.negociacoesView.update(this.negociacoes);
+    }
+    importaDados() {
+        this.negociacoesService
+            .obterDadosNegociacoesAPI()
+            .then(arrayNegociacoes => {
+            for (const itemNegociacao of arrayNegociacoes) {
+                this.negociacoes.adiciona(itemNegociacao);
+                this.atualizaView();
+            }
+        })
+            .catch(error => {
+            throw error;
+        });
     }
     adiciona() {
         const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);

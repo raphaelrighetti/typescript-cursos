@@ -364,3 +364,21 @@ Para combater isso, precisamos implementar um cache para esse getter.
 Para fazer isso não tem mistério, basta fazermos como faríamos em JavaScript puro usando uma variável fora do escopo do getter (já fiz isso num projeto da empresa).
 
 Primeiro iniciamos uma variável undefined ainda e dentro do getter checamos se ela é falsy. Se for, executamos a lógica do getter atribuindo um valor para ela e retornamos ela no fim do getter. Se não for, apenas retornamos ela.
+
+============API EXTERNA============
+
+Podemos usar a fetch API normalmente no nosso código TypeScript.
+
+Inclusive, o TypeScript é muito inteligente e irá inferir os tipos retornados pelas nossas promises nos .then. Porém, como não sabemos o tipo dos objetos retornados pela API, se não tivermos algo que padronize eles, teremos que usá-los como any, o que não é muito legal.
+
+Para melhorarmos isso, podemos usar interfaces, que são parecidas com as do Java, mas têm outras fubncionalidades.
+
+No caso de querermos apenas ter uma interface para termos os atributos definidos no TypeScript, basta criarmos uma interface com os atributos com os mesmos nomes do que os atributos dos objetos retornados pela API e falar que esses objetos são do tipo dessa interface que criamos, assim teremos o type security e o autocomplete.
+
+É importante tomar cuidado para não adicionar o método da nossa classe diretamente em um eventListener, pois isso irá mudar o this do método, fazendo com que ele vire o próprio elemento HTML que disparou o evento.
+
+Devemos usar o tipo "Promise<<tipo>>" quando iremos retornar uma promise em algum método nosso.
+
+============SERVICES============
+
+Podemos ter classes de services que irão isolar algumas lógicas e regras de negócio, assim como fazemos no Java com o Spring Boot.
