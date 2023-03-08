@@ -145,3 +145,25 @@ Nesta aula aprendi como usar a fetch API dos navegadores para fazer requisiçõe
 Além disso, aprendi um pouco sobre interfaces no TypeScript e vi como elas são parecidas com as interfaces no Java, mas possuem algumas funcionalidades diferentes.
 
 Também aprendi a isolar algumas lógicas em outras classes "service" no nosso projeto e a trabalhar com métodos que devolvem Promises nas nossas classes.
+
+### Aula 5
+
+#### Polimorfismo e interfaces
+
+Nessa aula aprendi a usar interfaces para conseguir usar o polimorfismo nas nossas classes, assim conseguindo fazer códigos de utilidade de forma mais genérica, vendo as referências por tipos mais genéricos, mas que possuem os métodos necessários para fazer o que precisamos fazer.
+
+Além disso, com todo esse conhecimento novo sobre interfaces e polimorfismo no TypeScript, aprendi a fazer alguns métodos muito úteis que se assemelham muito com métodos que temos nas classes do Java, como "toString();" e "equals();".
+
+Também aprendi a debugar o código TS no navegador utilizando sourcemaps, assim podendo debugá-lo normalmente, como se fosse um arquivo .js normal.
+
+### Conclusão
+
+Neste curso aprendi muito mais coisas sobre os Decorators no TypeScript e agora estou com esse conhecimento muito mais claro na minha mente.
+
+Além disso, aprendi mais detalhes sobre como alguns recursos do TypeScript funcionam e nos permitem trabalhar com conceitos muito comuns no paradigma de orientação a objetos.
+
+Com esse curso finalizei a formação "Mergulhe no JavaScript com TypeScript" da Alura!
+
+Nessa formação pude ter o meu primeiro contato com a linguagem TypeScript e entender como ela funciona. Me surpreendi quando vi que muitos recursos da linguagem são muito parecidos com alguns recursos do Java, por ser uma linguagem que nos permite trabalhar com o paradigma de orientação a objetos.
+
+Gostei muito da formação e não vejo a hora de começar a estudar o Angular, onde tenho certeza que os conhecimentos de TypeScript que adquiri ajudarão a entender o framework.

@@ -1,6 +1,7 @@
 import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { inspecionar } from "../decorators/inspecionar.js";
 import { domInjector } from "../decorators/domInjector.js";
+import { imprimir } from "../utils/imprimir.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -31,6 +32,17 @@ export class NegociacaoController {
         this.negociacoesService
             .obterDadosNegociacoesAPI()
             .then(arrayNegociacoes => {
+                return arrayNegociacoes.filter(itemNegociacao => {
+                    return !this.negociacoes
+                        .lista()
+                        .some(itemNegociacaoAComparar => {
+                            return itemNegociacaoAComparar.ehIgual(
+                                itemNegociacao
+                            );
+                        });
+                });
+            })
+            .then(arrayNegociacoes => {
                 for (const itemNegociacao of arrayNegociacoes) {
                     this.negociacoes.adiciona(itemNegociacao);
                     this.atualizaView();
@@ -60,6 +72,8 @@ export class NegociacaoController {
         this.negociacoes.adiciona(negociacao);
         this.limpaFormulario();
         this.atualizaView();
+
+        imprimir(negociacao, this.negociacoes);
     }
 
     private ehDiaUtil(data: Date) {

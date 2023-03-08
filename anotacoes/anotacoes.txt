@@ -163,6 +163,8 @@ Com isso, basta colocar "T" como tipo das coisas que precisam usar esse Generics
 
 Podemos ter classes abstratas assim como no Java, podendo definir métodos abstratos e não abstratos nelas.
 
+Não existe herança múltipla no TypeScript, assim como no Java.
+
 ============VISIBILIDADE============
 
 Quando omitimos o modificador de visibilidade, o TypeScript coloca public como padrão.
@@ -382,3 +384,35 @@ Devemos usar o tipo "Promise<<tipo>>" quando iremos retornar uma promise em algu
 ============SERVICES============
 
 Podemos ter classes de services que irão isolar algumas lógicas e regras de negócio, assim como fazemos no Java com o Spring Boot.
+
+============toString();============
+
+Podemos criar métodos "toString();" em nossas classes, mesmo não tendo esse método em alguma classe da hierarquia por padrão, para deixar os nossos logs mais fáceis.
+
+============equals();============
+
+Podemos criar métodos "equals();" em nossas classes, mesmo não tendo esse método em alguma classe da hierarquia por padrão, para fazermos comparações entre instâncias da mesma classe.
+
+============POLIMORFISMO============
+
+O polimorfismo funciona normalmente no TypeScript, basta termos uma referência com um tipo mais genérico que recebe outra referência que pode ser lida com esse tipo mais genérico.
+
+============CURIOSIDADES INTERFACES============
+
+Podemos utilizar Generics em nossas interfaces para obrigar o desenvolvedor a sempre seguir com o mesmo tipo nos métodos implementados da interface.
+
+Uma interface pode estender quantas outras interfaces quisermos que ela estenda, inclusive contando o tipo do Generics que passamos para essa interface que está estendendo outras para todas as outras que precisem de Generics que ela estender também.
+
+============DEBUGANDO TS============
+
+Para debugar nossos arquivos .ts temos que inserir a seguinte configuração no nosso "tsconfig.json":
+
+"sourceMap": true
+
+Isso fará que sejam gerados arquivos finalizados com ".map" junto com os arquivos .js na nossa pasta dist, que apontam para os arquivos .ts da nossa pasta src. Esses arquivos são o que nos permite debugar a nossa aplicação no navegador a partir do nosso código TS.
+
+Importante lembrar que o servidor que está rodando nossa aplicação também deve estar reconhecendo a pasta src para conseguirmos visualizar os arquivos ts no navegador.
+
+Tendo deixado tudo isso pronto, basta achar o arquivo .ts correto no nosso navegador e debugar normalmente.
+
+Os frameworks que permitem que usemos o TypeScript já fazem essas configurações automaticamente, então quando estamos trabalhando com eles não precisamos nos preocupar com toda essa estrutura.
