@@ -125,3 +125,13 @@ Apesar de ser um pouco semelhante com as annotations do Java em alguns aspectos,
 Nesta aula aprendi a usar parâmetros nos nossos Decorators, assim permitindo com que façamos uma lógica diferenciada dependendo de algum parâmetro recebido e vi que o único intuito de termos uma função que retorna outra função como nosso Decorator é justamente esse, ou seja, se não precisarmos de parâmetros no nosso Decorator, podemos simplesmente exportar a função que está fazendo toda a lógica diretamente.
 
 Além disso, aprendi sobre a ordem de execução dos Decorators quando temos mais de um em algum método e aprendi a acessar mais informações sobre o método que estamos decorando a partir do this do "descriptor.value".
+
+### Aula 3
+
+#### Decorators com propriedades
+
+Nesta aula aprendi como utilizar Decorators com propriedades para conseguirmos definir propriedades de forma mais fácil e genérica nas nossas classes.
+
+Também aprendi a fazer uma solução de cache para o nosso método getter que irá retornar a nossa propriedade criada/modificada para a lógica do método getter não ser executada todas as vezes em que a propriedade for acessada.
+
+Aprendi muitos detalhes de como os parâmetros que recebemos nos Decorators funcionam e como utilizar lógicas para conseguirmos fazer coisas que não conseguiríamos fazer apenas acessando eles e modificando algumas coisas.

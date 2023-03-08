@@ -251,25 +251,25 @@ Podemos utilizar o método "now();" para pegarmos os milissegundos de agora.
 
 ============DECORATOR============
 
-Decorators no TypeScript são tipo annotations no Java e também são utilizadas com um "@" antes do nome e acima de métodos.
+Decorators no TypeScript são tipo annotations no Java e também são utilizados com um "@" antes do nome e acima de métodos.
 
-É uma função que retorna outra função que iremos implementar mais coisas, para assim utilizá-la como o método que estamos passando para o decorator.
+São funcões que serão utilizadas no lugar dos nossos métodos, mas nos dando a possibilidade de ainda assim executarmos a ação dos métodos, só que implementando mais coisas neles.
 
-Eles servem para pegarmos um método nosso, decorá-lo na função decorator e sobrescrevê-lo adicionando coisas nele.
-
-Na nossa função decorator precisamos retornar outra função que recebe três parâmetros:
+Na nossa função decorator precisamos receber três parâmetros:
 
 1. target: any
 
-    É o target do nosso decorator que diz no que vamos adicioná-lo. Se for um método estático pode ser um construtor, se for um método padrão de uma classe é o prototype da classe.
+    É o target do nosso decorator que diz no que vamos adicioná-lo. Se for um método estático é o construtor da classe e se for um método padrão de uma classe é o prototype da classe. É a mesma lógica para propriedades da classe.
+
+    Importante lembrar que não temos uma referência para a instância da classe que estamos decorando a partir deste target.
 
 2. propertyKey: string
 
-    É o nome do método em que inserimos o decorator.
+    É o nome do método/propriedade em que inserimos o decorator.
 
 3. descriptor: PropertyDescriptor
 
-    É o parâmetro que tem a referência par o método original sem o decorator, ou seja, é o parâmetro que sabe tudo o que aquele método faz.
+    É o parâmetro que tem a referência para o método original sem o decorator, ou seja, é o parâmetro que sabe tudo o que aquele método faz.
 
 Se retornarmos o descriptor, nosso método que está anotado com o decorator irá continuar a mesma coisa, sem problema algum, mas para fazermos algo com o nosso decorator precisamos modificar esse descriptor, pois isso é o que fará com que a gente consiga modificar os nossos métodos com o decorator.
 
@@ -323,4 +323,44 @@ Em métodos estáticos, o target é o constructor e em métodos da instância é
 
 Podemos colocar mais de um decorator para decorar o nosso método, mas isso pode bagunçar a ordem de execução deles. Isso acontece porque, se um decorator executa o nosso método e nosso método já tem outro decorator, na hora em que o decorator estiver chamando o método original, ele estará chamando o outro decorator também, assim parando a execução do decorator que está mais acima e voltando para ela após o término da outra execução.
 
-Podemos pegar uma série de informação sobre o método, a classe e etc no "this" do "descriptor.value".
+Podemos pegar uma série de informações sobre o método, a classe e etc no "this" do "descriptor.value".
+
+
+============DECORATOR COM PROPRIEDADES============
+
+Quando vamos utilizar um Decorator com propriedades, não precisamos utilizar o parâmetro "descriptor", uma vez que ele diz respeito apenas sobre métodos.
+
+Como queremos alterar uma propriedade da nossa instância e não temos como acessar a instância em si pelo Decorator, precisamos fazer um jogo de cintura para conseguirmos fazer isso.
+
+A ideia é criarmos uma função getter que retorna o atributo modificado e atribuirmos ela a uma propriedade getter com o mesmo nome do atributo (se for privado esse getter só vai funcionar na classe em si, o que é muito bom) com o "Object.defineProperty();", passando como parâmetros:
+
+1. target
+2. propertyKey
+3. { get: <função getter> }
+
+Isso ficaria mais ou menos assim:
+
+export function domInjector(seletor: string) {
+    return function (target: any, propertyKey: string) {
+        console.log(propertyKey);
+        const getter = function () {
+            const elemento = document.querySelector(seletor) as HTMLElement;
+
+            return elemento;
+        };
+
+        Object.defineProperty(target, propertyKey, { get: getter });
+
+        console.log(target);
+    };
+}
+
+Assim temos os nossos atributos decorados como getters na nossa classe e quando acessarmos eles, estaremos acessando o atributo modificado que o Decorator gerou.
+
+Porém, dessa forma o método getter sempre será chamado e a lógica para modificar esse atributo sempre será executada, o que, principalmente no exemplo acima, não é bom, pois a performance pode ser afetada.
+
+Para combater isso, precisamos implementar um cache para esse getter.
+
+Para fazer isso não tem mistério, basta fazermos como faríamos em JavaScript puro usando uma variável fora do escopo do getter (já fiz isso num projeto da empresa).
+
+Primeiro iniciamos uma variável undefined ainda e dentro do getter checamos se ela é falsy. Se for, executamos a lógica do getter atribuindo um valor para ela e retornamos ela no fim do getter. Se não for, apenas retornamos ela.
